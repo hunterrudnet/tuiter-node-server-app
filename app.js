@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import mongoose from "mongoose";
 import HelloController
   from "./controllers/hello-controller.js";
 import UserController
@@ -13,3 +14,4 @@ TuitsController(app);
 HelloController(app);
 UserController(app);
 app.listen(process.env.PORT || 4000);
+mongoose.connect('mongodb://localhost:27017/tuiter');
