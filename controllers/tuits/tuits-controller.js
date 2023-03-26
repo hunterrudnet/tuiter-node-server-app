@@ -20,9 +20,11 @@ const templateTuit = {
 
 const createTuit = async (req, res) => {
   const newTuit = req.body;
-  newTuit = {...templateTuit, ...newTuit, _id: (new Date()).getTime()+''};
-  const insertedTuit = await tuitsDao.createTuit(newTuit);
-  res.json(insertedTuit);
+    newTuit.likes = 0;
+    newTuit.dislikes = 0;
+    newTuit.liked = false;
+    const insertedTuit = await tuitsDao.createTuit(newTuit);
+    res.json(insertedTuit);
 }
 
   
