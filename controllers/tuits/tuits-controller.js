@@ -1,28 +1,16 @@
 import * as tuitsDao from '../../tuits/tuits-dao.js';
 
-const currentUser = {
-  "username": "NASA",
-  "handle": "@nasa",
-  "image": "nasa.png"
-}
-
-const templateTuit = {
-  ...currentUser,
-  "topic": "Space",
-  "time": "2h",
-  "liked": false,
-  "disliked": false,
-  "likes": 0,
-  "dislikes": 0,
-  "replies": 0,
-  "retuits": 0
-}
-
 const createTuit = async (req, res) => {
   const newTuit = req.body;
+    newTuit.user = 'NASA';
+    newTuit.handle = '@nasa';
+    newTuit.image = 'nasa.png';
+    newTuit.topic = 'Space';
+    newTuit.time = '2h';
     newTuit.likes = 0;
     newTuit.dislikes = 0;
     newTuit.liked = false;
+    newTuit.disliked = false;
     const insertedTuit = await tuitsDao.createTuit(newTuit);
     res.json(insertedTuit);
 }
